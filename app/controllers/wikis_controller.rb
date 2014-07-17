@@ -72,6 +72,10 @@ class WikisController < ApplicationController
       @wiki = Wiki.find(params[:id])
     end
 
+    def set_user
+      @user = current_user
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def wiki_params
       params.require(:wiki).permit(:name, :private, :user_id)
