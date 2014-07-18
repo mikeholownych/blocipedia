@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140717051836) do
+ActiveRecord::Schema.define(version: 20140718005311) do
+
+  create_table "bootsy_image_galleries", force: true do |t|
+    t.integer  "bootsy_resource_id"
+    t.string   "bootsy_resource_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "bootsy_images", force: true do |t|
+    t.string   "image_file"
+    t.integer  "image_gallery_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "collaborators", force: true do |t|
     t.integer  "user_id"
@@ -25,7 +39,7 @@ ActiveRecord::Schema.define(version: 20140717051836) do
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",	 null: false
+    t.string   "encrypted_password",     default: ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -42,7 +56,6 @@ ActiveRecord::Schema.define(version: 20140717051836) do
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
     t.integer  "role"
-    t.boolean  "premium"		default: false
     t.string   "invitation_token"
     t.datetime "invitation_created_at"
     t.datetime "invitation_sent_at"
@@ -63,7 +76,7 @@ ActiveRecord::Schema.define(version: 20140717051836) do
   create_table "wikis", force: true do |t|
     t.string   "name"
     t.text     "body"
-    t.boolean  "private",	default: false
+    t.boolean  "private"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

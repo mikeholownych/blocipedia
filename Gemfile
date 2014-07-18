@@ -14,6 +14,7 @@ gem 'devise'
 gem 'devise_invitable'
 gem 'pundit'
 gem 'figaro'
+gem 'bootsy'
 group :development do
   gem 'sqlite3'
   gem 'better_errors'
