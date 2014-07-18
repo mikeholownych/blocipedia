@@ -1,10 +1,11 @@
 class CollaboratorsController < ApplicationController
   before_action :set_collaborator, only: [:show, :edit, :update, :destroy]
+  before_action :set_wiki, only: [:new, :create, :index]
 
   # GET /collaborators
   # GET /collaborators.json
   def index
-    @collaborators = Collaborator.all
+    @collaborators = @wiki.collaborators
   end
 
   # GET /collaborators/1
@@ -14,7 +15,8 @@ class CollaboratorsController < ApplicationController
 
   # GET /collaborators/new
   def new
-    @collaborator = Collaborator.new
+    @users = User.premium.not(current_user.id)
+    @collaborator = @wiki.collaborators.new
   end
 
   # GET /collaborators/1/edit
@@ -24,11 +26,11 @@ class CollaboratorsController < ApplicationController
   # POST /collaborators
   # POST /collaborators.json
   def create
-    @collaborator = Collaborator.new(collaborator_params)
+    @collaborator = @wiki.collaborators.build(collaborator_params)
 
     respond_to do |format|
       if @collaborator.save
-        format.html { redirect_to @collaborator, notice: 'Collaborator was successfully created.' }
+        format.html { redirect_to @wiki, notice: 'Collaborator was successfully created.' }
         format.json { render :show, status: :created, location: @collaborator }
       else
         format.html { render :new }
@@ -65,6 +67,10 @@ class CollaboratorsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_collaborator
       @collaborator = Collaborator.find(params[:id])
+    end
+
+    def set_wiki
+      @wiki = Wiki.friendly.find(params[:wiki_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
