@@ -1,5 +1,10 @@
 class WikisController < ApplicationController
   before_action :set_wiki, only: [:show, :edit, :update, :destroy]
+  before_action :set_user
+
+  def public
+    @wikis = Wiki.where('private = ?', false)
+  end
 
   # GET /wikis
   # GET /wikis.json
@@ -67,8 +72,12 @@ class WikisController < ApplicationController
       @wiki = Wiki.find(params[:id])
     end
 
+    def set_user
+      @user = current_user
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def wiki_params
-      params.require(:wiki).permit(:name, :private, :user_id)
+      params.require(:wiki).permit(:name, :body, :private, :user_id, :bootsy_image_gallery_id)
     end
 end
