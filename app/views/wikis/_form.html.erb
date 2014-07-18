@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :body %><br>
-    <%= f.bootsy_area :body, cols: 100, rows: 20 %>
+    <%= f.bootsy_area :body, editor_options: { html: true }, cols: 102, rows: 20 %>
   </div>
   <% if @user.premium? %>
   <div class="field">
