@@ -19,7 +19,7 @@
     <%= f.label :body %><br>
     <%= f.bootsy_area :body, editor_options: { html: true }, cols: 102, rows: 20 %>
   </div>
-  <% if @user.premium? %>
+  <% if @user.premium? && @wiki.user == current_user %>
   <div class="field">
     <%= f.label :private %><br>
     <%= f.check_box :private %>
