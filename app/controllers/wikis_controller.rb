@@ -10,6 +10,7 @@ class WikisController < ApplicationController
   # GET /wikis.json
   def index
     @wikis = Wiki.all
+    @colspan = @user.premium? ? 4 : 2
   end
 
   # GET /wikis/1
@@ -69,7 +70,7 @@ class WikisController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_wiki
-      @wiki = Wiki.find(params[:id])
+      @wiki = Wiki.friendly.find(params[:id])
     end
 
     def set_user

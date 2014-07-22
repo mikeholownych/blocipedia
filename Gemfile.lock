@@ -90,6 +90,8 @@ GEM
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
+    friendly_id (5.0.4)
+      activerecord (>= 4.0.0)
     hike (1.2.3)
     hub (1.12.2)
     i18n (0.6.11)
@@ -112,6 +114,7 @@ GEM
     mini_portile (0.6.0)
     minitest (5.4.0)
     multi_json (1.10.1)
+    netrc (0.7.7)
     nokogiri (1.6.2.1)
       mini_portile (= 0.6.0)
     orm_adapter (0.5.0)
@@ -150,6 +153,9 @@ GEM
     rdoc (4.1.1)
       json (~> 1.4)
     remotipart (1.2.1)
+    rest-client (1.7.2)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
     rspec-core (3.0.2)
       rspec-support (~> 3.0.0)
     rspec-expectations (3.0.2)
@@ -192,6 +198,10 @@ GEM
       activesupport (>= 3.0)
       sprockets (~> 2.8)
     sqlite3 (1.3.9)
+    stripe (1.14.0)
+      json (~> 1.8.1)
+      mime-types (~> 1.25)
+      rest-client (~> 1.4)
     subexec (0.2.3)
     thin (1.6.2)
       daemons (>= 1.0.9)
@@ -236,6 +246,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   figaro
+  friendly_id
   hub
   jbuilder (~> 2.0)
   jquery-rails
@@ -252,6 +263,7 @@ DEPENDENCIES
   selenium-webdriver
   spring
   sqlite3
+  stripe
   thin
   turbolinks
   uglifier (>= 1.3.0)

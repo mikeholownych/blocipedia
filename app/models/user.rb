@@ -13,4 +13,7 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  scope :premium, -> { where(premium: true) }
+  scope :not, ->(id) { where('id != ?', id) }
 end
